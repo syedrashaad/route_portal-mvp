@@ -14,18 +14,21 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenAnalysis }) => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-500/10 dark:bg-indigo-600/10 rounded-full blur-[200px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto space-y-12 text-center relative z-10">
-        {/* Main Headline with New Positioning */}
+        {/* Main Headline with Precise Positioning Wording */}
         <div className="space-y-6">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 font-semibold">
             <span>ROUTE PORTAL • EXECUTIVE SUMMARY</span>
           </div>
 
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
-            RoutePortal doesn't need to start from scratch.
+            Don't optimise the route. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-500 to-sky-600 dark:from-indigo-300 dark:via-slate-100 dark:to-sky-300">
+              Optimise the operation.
+            </span>
           </h2>
 
-          <p className="text-base sm:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
-            The opportunity is to build on the routing foundation and make every collection decision more measurable, explainable and cost-aware.
+          <p className="text-base sm:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed font-normal">
+            RoutePortal provides the routing foundation. The opportunity is to make every collection decision more measurable, explainable and cost-aware.
           </p>
         </div>
 

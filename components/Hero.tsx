@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Zap, MapPin, Navigation, ArrowRight } from "lucide-react";
+import { ArrowDown, Zap, MapPin, Navigation } from "lucide-react";
 import { DESTINATIONS, HUB_LOCATION } from "@/data/scenarioData";
 
 interface HeroProps {
@@ -39,18 +39,18 @@ export const Hero: React.FC<HeroProps> = ({ onSeeHowItWorks, onJumpToDemo }) => 
             </span>
           </h1>
 
-          {/* Subheadline with Updated Positioning */}
+          {/* Subheadline with Precise Product Positioning */}
           <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed font-normal">
             RoutePortal already handles the core routing workflow. This concept explores the next layer: optimising how an entire day's vehicle collections are completed across drivers, travel modes, time and cost.
           </p>
 
-          {/* New Thesis Banner */}
+          {/* Thesis Banner */}
           <div className="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20 max-w-2xl">
             <div className="flex items-center space-x-2 text-xs font-mono font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-wider">
               <span>PRODUCT THESIS</span>
             </div>
             <p className="text-sm font-semibold text-slate-900 dark:text-white mt-1">
-              "From proximity-based routing to cost-aware collection planning."
+              "RoutePortal already handles the core routing problem. The next question is whether the entire collection operation can be optimised for cost."
             </p>
           </div>
 

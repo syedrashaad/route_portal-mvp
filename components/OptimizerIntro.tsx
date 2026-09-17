@@ -53,7 +53,7 @@ export const OptimizerIntro: React.FC = () => {
             <div className="flex items-center space-x-2">
               <Cpu className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
               <span className="text-sm font-semibold text-slate-900 dark:text-white">
-                ROUTE PORTAL OPTIMISATION ENGINE
+                ROUTE PORTAL OPTIMISATION ENGINE CONCEPT
               </span>
             </div>
             <span className="text-xs font-mono text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 font-bold">
@@ -80,7 +80,7 @@ export const OptimizerIntro: React.FC = () => {
               </div>
             </div>
 
-            {/* Central Engine Processing Hub */}
+            {/* Central Engine Processing Hub with Exact Requested Wording */}
             <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-xl bg-gradient-to-b from-indigo-50 via-white to-slate-50 dark:from-indigo-950/60 dark:to-slate-900 border border-indigo-200 dark:border-indigo-500/30 text-center space-y-4 shadow-sm dark:shadow-glow-sm">
               <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 dark:bg-indigo-600/30 border border-indigo-500/40 flex items-center justify-center text-indigo-600 dark:text-indigo-300">
                 <Cpu className="w-7 h-7 animate-pulse-subtle" />
@@ -88,8 +88,11 @@ export const OptimizerIntro: React.FC = () => {
 
               <div>
                 <h4 className="text-lg font-bold text-slate-900 dark:text-white">Cost Minimisation Engine</h4>
-                <p className="text-xs text-slate-600 dark:text-indigo-200/80 mt-1">
-                  Evaluates thousands of permutation plans per second
+                <p className="text-xs font-medium text-slate-700 dark:text-indigo-200/90 mt-1">
+                  Evaluates feasible collection plans against total operational cost
+                </p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 font-mono italic mt-1.5">
+                  Prototype demonstrates the decision logic using an illustrative five-car scenario.
                 </p>
               </div>
 

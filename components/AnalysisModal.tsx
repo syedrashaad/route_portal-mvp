@@ -52,21 +52,21 @@ export const AnalysisModal: React.FC<AnalysisModalProps> = ({ isOpen, onClose })
             <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-300 text-xs font-mono flex items-start space-x-3 font-medium">
               <ShieldCheck className="w-5 h-5 flex-shrink-0 text-amber-600 dark:text-amber-400 mt-0.5" />
               <div>
-                <strong>IMPORTANT NOTICE ON CONCEPT DATA:</strong> The data, routes, rates, and figures presented in this prototype are derived from an illustrative concept analysis created to demonstrate operational optimization principles for CarPlanet. They are strictly illustrative example figures and do not represent verified CarPlanet proprietary operational records.
+                <strong>IMPORTANT NOTICE ON CONCEPT POSITIONING:</strong> CarPlanet's RoutePortal is live in production and handles core routing and appointment allocations. The data, routes, rates, and figures presented in this prototype are derived from an illustrative concept analysis created to demonstrate a cost-aware optimisation layer. They are strictly illustrative example figures and do not represent verified CarPlanet proprietary operational records.
               </div>
             </div>
 
             {/* Core Thesis */}
             <div className="space-y-3">
-              <h4 className="text-base font-bold text-slate-900 dark:text-white">1. Executive Summary & Problem Formulation</h4>
+              <h4 className="text-base font-bold text-slate-900 dark:text-white">1. Executive Summary & Product Positioning</h4>
               <p>
-                In multi-vehicle collection models, manual dispatching defaults to group shuttling (one driver shuttle transporting 5+ collection drivers to sequential seller drop points). While straightforward, this strategy creates massive hidden costs in <strong>paid passenger ride time</strong> (drivers sitting idle waiting to be dropped off) and <strong>route detours</strong> to reach outlying locations.
+                RoutePortal provides the core routing foundation for vehicle appointments. This concept explores an additional decision layer that extends point-to-point routing into a total cost-aware collection engine—evaluating driver paid time, shuttle mileage, seller waiting, alternative transit options, and driver mobile cost reporting.
               </p>
             </div>
 
             {/* Economic Baseline */}
             <div className="space-y-3 pt-2 border-t border-slate-200 dark:border-white/10">
-              <h4 className="text-base font-bold text-slate-900 dark:text-white">2. Economic Baseline (5-Car Scenario)</h4>
+              <h4 className="text-base font-bold text-slate-900 dark:text-white">2. Economic Baseline (Illustrative 5-Car Scenario)</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
                 <div className="p-3 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 space-y-1">
                   <div className="text-slate-500 dark:text-slate-400">DRIVER HOURLY RATE</div>
@@ -91,7 +91,7 @@ export const AnalysisModal: React.FC<AnalysisModalProps> = ({ isOpen, onClose })
             <div className="space-y-3 pt-2 border-t border-slate-200 dark:border-white/10">
               <h4 className="text-base font-bold text-slate-900 dark:text-white">3. Multi-Modal Optimisation Architecture</h4>
               <p>
-                The Route Portal engine models vehicle collection as a Mixed-Integer Linear Program (MILP) combined with public transit network integration. The solver evaluates:
+                The Route Portal engine concept models vehicle collection as a Mixed-Integer Linear Program (MILP) combined with public transit network integration. The solver evaluates:
               </p>
               <ul className="list-disc list-inside space-y-1 text-xs font-mono text-slate-600 dark:text-slate-400 pl-2">
                 <li>Multi-driver passenger shuttle corridor optimization</li>

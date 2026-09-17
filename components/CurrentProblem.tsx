@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { User, Car, Clock, PoundSterling, Play, RotateCcw, AlertTriangle, ArrowRight } from "lucide-react";
+import { User, Car, Clock, PoundSterling, Play, RotateCcw, AlertTriangle } from "lucide-react";
 
 export const CurrentProblem: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
@@ -86,15 +86,15 @@ export const CurrentProblem: React.FC = () => {
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-[#090A0F] border-t border-slate-200 dark:border-white/5 relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto space-y-12">
-        {/* Header with Updated Positioning */}
+        {/* Header with Exact Requested Text */}
         <div className="max-w-4xl space-y-4">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-mono text-amber-700 dark:text-amber-400 font-bold">
             <span>SECTION 02 • THE OPPORTUNITY</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
-            RoutePortal already solves the core routing problem. <br />
+            RoutePortal already handles the core routing problem. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-indigo-600 dark:from-amber-400 dark:to-indigo-300">
-              The next opportunity is to optimise the collection decision itself.
+              The next question is whether the entire collection operation can be optimised for cost.
             </span>
           </h2>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -109,12 +109,12 @@ export const CurrentProblem: React.FC = () => {
               <span className="text-xs font-mono text-slate-500 dark:text-slate-400 font-bold uppercase">
                 APPROACH 1: PROXIMITY ROUTING
               </span>
-              <span className="text-xs font-mono text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded">
+              <span className="text-xs font-mono text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded font-bold">
                 BASELINE
               </span>
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Assigns the nearest buyer to the next available appointment based purely on geographic distance.
+              Assigns the nearest buyer to the next available appointment based primarily on geographic distance.
             </p>
             <div className="space-y-2 pt-2 text-xs font-mono text-slate-500">
               <div className="flex items-center space-x-2 text-amber-700 dark:text-amber-400">
@@ -323,7 +323,7 @@ export const CurrentProblem: React.FC = () => {
 
         {/* Footnote Disclaimer */}
         <p className="text-xs text-slate-500 font-mono italic text-center pt-2">
-          * Illustrative scenario based on the Route Portal analysis. This does not represent CarPlanet's production routing algorithm.
+          * Illustrative scenario based on the Route Portal concept analysis. This does not represent CarPlanet's production routing algorithm.
         </p>
       </div>
     </section>

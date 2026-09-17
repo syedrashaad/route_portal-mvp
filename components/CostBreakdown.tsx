@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, ArrowRight, Layers, CheckCircle2 } from "lucide-react";
+import { AlertTriangle, Layers } from "lucide-react";
 import { COST_BREAKDOWN, EXISTING_WORKFLOW_STEPS } from "@/data/scenarioData";
 
 export const CostBreakdown: React.FC = () => {
@@ -12,16 +12,16 @@ export const CostBreakdown: React.FC = () => {
       <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-rose-500/5 dark:bg-rose-600/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto space-y-16">
-        {/* Header */}
+        {/* Header with Exact Requested Text */}
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-xs font-mono text-rose-700 dark:text-rose-400 font-bold">
             <span>SECTION 03 • WORKFLOW & COST ANALYSIS</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
-            The problem isn't just routing.
+            A routing-first approach can optimise the path without necessarily optimising the economics of the complete collection.
           </h2>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-            RoutePortal already handles point-to-point routing. But up to 43% of total controllable collection cost is lost before a vehicle even turns its key.
+            The opportunity is to extend routing with a cost-aware operational layer that considers the full collection decision, not just the route.
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export const CostBreakdown: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pb-4 border-b border-slate-200 dark:border-white/10">
             <div>
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
-                THE EXISTING ROUTEPORTAL WORKFLOW
+                THE ROUTEPORTAL WORKFLOW
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
                 Production baseline execution pipeline
@@ -65,7 +65,7 @@ export const CostBreakdown: React.FC = () => {
                   Where does the next optimisation layer sit?
                 </h4>
                 <p className="text-xs text-slate-600 dark:text-slate-300">
-                  The <strong>Collection Optimiser</strong> sits directly above the route generator—evaluating the entire day's collection plan across drivers, modes, and costs rather than only the next route.
+                  The <strong>Collection Optimiser</strong> extends the route generator—evaluating the entire day's collection plan across drivers, modes, and costs rather than only the next route.
                 </p>
               </div>
             </div>
@@ -83,12 +83,12 @@ export const CostBreakdown: React.FC = () => {
                 Controllable Cost Distribution
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-                Estimated share of controllable cost in the illustrative scenario
+                Estimated share of controllable cost in the illustrative five-car scenario
               </p>
             </div>
             <div className="px-3 py-1 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-800 dark:text-rose-300 font-mono text-xs font-bold flex items-center space-x-1.5">
               <AlertTriangle className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" />
-              <span>Waiting + Failed Journeys ≈ 43%</span>
+              <span>Waiting + Failed Journeys ≈ 43%*</span>
             </div>
           </div>
 
@@ -124,6 +124,10 @@ export const CostBreakdown: React.FC = () => {
               </motion.div>
             ))}
           </div>
+
+          <p className="text-xs text-slate-500 font-mono italic text-center pt-2">
+            * 43% figure is derived from the illustrative five-car scenario analysis and does not represent verified CarPlanet production telemetry.
+          </p>
         </div>
       </div>
     </section>

@@ -57,7 +57,7 @@ export const RouteDemo: React.FC = () => {
   return (
     <section id="interactive-demo" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-[#090A0F] border-t border-slate-200 dark:border-white/5 relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto space-y-12">
-        {/* Header */}
+        {/* Header with Exact Requested Text */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-700 dark:text-emerald-400 font-bold">
@@ -68,11 +68,11 @@ export const RouteDemo: React.FC = () => {
               Let's plan the same five-car day.
             </h2>
             <p className="text-base text-slate-600 dark:text-slate-400">
-              Compare the baseline proximity-based plan against the multi-modal collection optimisation model.
+              Compare an illustrative baseline collection plan against the proposed cost-aware optimisation layer.
             </p>
           </div>
 
-          {/* Plan Toggle Control with Updated Positioning Labels */}
+          {/* Plan Toggle Control with Exact Wording */}
           <div className="flex items-center p-1.5 rounded-xl bg-white dark:bg-surface border border-slate-200 dark:border-white/10 space-x-2 shadow-sm dark:shadow-none">
             <button
               onClick={() => handleTogglePlan("current")}
@@ -82,9 +82,9 @@ export const RouteDemo: React.FC = () => {
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              <span>Baseline Proximity Plan</span>
+              <span>Illustrative Baseline Plan</span>
               <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">
-                £466.37
+                £466.37*
               </span>
             </button>
 
@@ -97,9 +97,9 @@ export const RouteDemo: React.FC = () => {
               }`}
             >
               <Zap className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-              <span>Optimised Plan</span>
+              <span>Optimised Collection Plan</span>
               <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
-                £408.84
+                £408.84*
               </span>
             </button>
           </div>
@@ -115,8 +115,8 @@ export const RouteDemo: React.FC = () => {
                 <Navigation className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                 <span className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 uppercase">
                   {activeTab === "current"
-                    ? "Baseline Proximity Route Sequence"
-                    : "Optimised Multi-Modal Dispatch Plan"}
+                    ? "Illustrative Baseline Plan Sequence"
+                    : "Optimised Collection Plan Sequence"}
                 </span>
               </div>
 
@@ -264,7 +264,7 @@ export const RouteDemo: React.FC = () => {
             {/* Disclaimer & Toggle button */}
             <div className="mt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-white/5 gap-2">
               <span className="font-mono italic">
-                * Illustrative scenario. This does not represent CarPlanet's production routing algorithm.
+                * Illustrative estimates based on prototype 5-car scenario. Does not represent CarPlanet production telemetry.
               </span>
 
               {activeTab === "current" && (
@@ -278,7 +278,7 @@ export const RouteDemo: React.FC = () => {
             </div>
           </div>
 
-          {/* Metrics & Results Sidebar */}
+          {/* Metrics Sidebar */}
           <div className="lg:col-span-4 space-y-6 flex flex-col justify-between">
             <div className="bg-white dark:bg-surface border border-slate-200/80 dark:border-white/10 rounded-2xl p-6 space-y-6 shadow-card-light dark:shadow-none">
               <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
@@ -302,7 +302,7 @@ export const RouteDemo: React.FC = () => {
                   <span>TOTAL ESTIMATED COST</span>
                 </div>
                 <div className="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">
-                  £{activePlan.totalCost.toFixed(2)}
+                  £{activePlan.totalCost.toFixed(2)}*
                 </div>
               </div>
 
@@ -344,7 +344,7 @@ export const RouteDemo: React.FC = () => {
                 >
                   <div className="flex items-center space-x-2 text-emerald-800 dark:text-emerald-400 text-xs font-mono font-bold">
                     <TrendingDown className="w-4 h-4" />
-                    <span>OPTIMISATION IMPACT</span>
+                    <span>ILLUSTRATIVE OPTIMISATION IMPACT</span>
                   </div>
 
                   <div className="flex items-baseline space-x-3">
@@ -352,7 +352,7 @@ export const RouteDemo: React.FC = () => {
                       £{SAVINGS_SUMMARY.costSaved.toFixed(2)}
                     </span>
                     <span className="text-sm font-semibold text-emerald-900 dark:text-emerald-200">
-                      ({SAVINGS_SUMMARY.percentageSaved}% daily cost reduction)
+                      ({SAVINGS_SUMMARY.percentageSaved}% daily cost reduction*)
                     </span>
                   </div>
 
