@@ -43,7 +43,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenAnalysis }) => {
           </button>
 
           <a
-            href="mailto:rashaadsyed@gmail.com?subject=Route%20Portal%20-%20CarPlanet%20Product%20Discussion"
+            href="mailto:syedrashaad01@gmail.com?subject=Route%20Portal%20-%20CarPlanet%20Product%20Discussion"
             className="px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all duration-200 flex items-center space-x-2 shadow-sm dark:shadow-glow-sm hover:shadow-indigo-500/25 active:scale-95"
           >
             <Mail className="w-4 h-4" />

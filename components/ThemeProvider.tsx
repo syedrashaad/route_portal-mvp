@@ -13,7 +13,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>("light");
+  const [theme, setThemeState] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -23,9 +23,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       setThemeState(savedTheme);
       applyTheme(savedTheme);
     } else {
-      // Default mode is LIGHT MODE as requested
-      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const initialTheme = systemDark ? "dark" : "light";
+      // Default mode is DARK MODE as requested
+      const initialTheme: Theme = "dark";
       setThemeState(initialTheme);
       applyTheme(initialTheme);
     }
@@ -47,7 +46,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   const toggleTheme = () => {
-    const nextTheme = theme === "light" ? "dark" : "light";
+    const nextTheme = theme === "dark" ? "light" : "dark";
     setTheme(nextTheme);
   };
 
