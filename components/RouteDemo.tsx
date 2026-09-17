@@ -68,11 +68,11 @@ export const RouteDemo: React.FC = () => {
               Let's plan the same five-car day.
             </h2>
             <p className="text-base text-slate-600 dark:text-slate-400">
-              Compare the manual multi-driver shuttle route against the Route Portal multi-modal optimisation engine.
+              Compare the baseline proximity-based plan against the multi-modal collection optimisation model.
             </p>
           </div>
 
-          {/* Plan Toggle Control */}
+          {/* Plan Toggle Control with Updated Positioning Labels */}
           <div className="flex items-center p-1.5 rounded-xl bg-white dark:bg-surface border border-slate-200 dark:border-white/10 space-x-2 shadow-sm dark:shadow-none">
             <button
               onClick={() => handleTogglePlan("current")}
@@ -82,7 +82,7 @@ export const RouteDemo: React.FC = () => {
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              <span>Current Plan</span>
+              <span>Baseline Proximity Plan</span>
               <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">
                 £466.37
               </span>
@@ -115,7 +115,7 @@ export const RouteDemo: React.FC = () => {
                 <Navigation className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                 <span className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 uppercase">
                   {activeTab === "current"
-                    ? "Current Manual Shuttle Route"
+                    ? "Baseline Proximity Route Sequence"
                     : "Optimised Multi-Modal Dispatch Plan"}
                 </span>
               </div>
@@ -129,10 +129,9 @@ export const RouteDemo: React.FC = () => {
               </button>
             </div>
 
-            {/* SVG Interactive Canvas with Dedicated Light Mode Styling */}
+            {/* SVG Interactive Canvas */}
             <div className="relative w-full h-[400px] rounded-xl bg-slate-100/90 dark:bg-[#08090D] border border-slate-200 dark:border-white/5 overflow-hidden">
               <svg viewBox="0 0 800 550" className="w-full h-full object-contain">
-                {/* Background Grid Lines */}
                 {ALL_LOCATIONS.map((loc, i) =>
                   ALL_LOCATIONS.slice(i + 1).map((dest) => (
                     <line
@@ -148,7 +147,6 @@ export const RouteDemo: React.FC = () => {
                   ))
                 )}
 
-                {/* Active Shuttle Route Path */}
                 {activePlan.routeSequence.map((locId, idx) => {
                   if (idx === 0) return null;
                   const prevLoc = ALL_LOCATIONS.find(
@@ -174,10 +172,8 @@ export const RouteDemo: React.FC = () => {
                   );
                 })}
 
-                {/* Leicester Split Route (Optimised Mode Only) */}
                 {activeTab === "optimised" && (
                   <g>
-                    {/* Public Transit Line Birmingham -> Leicester */}
                     <motion.line
                       x1={HUB_LOCATION.x}
                       y1={HUB_LOCATION.y}
@@ -193,7 +189,6 @@ export const RouteDemo: React.FC = () => {
                   </g>
                 )}
 
-                {/* Hub Node (Birmingham) */}
                 <g transform={`translate(${HUB_LOCATION.x}, ${HUB_LOCATION.y})`}>
                   <circle r="16" fill="#4F46E5" stroke="#312E81" strokeWidth="3" />
                   <text y="-22" textAnchor="middle" className="fill-slate-900 dark:fill-white font-sans font-bold" fontSize="15">
@@ -201,7 +196,6 @@ export const RouteDemo: React.FC = () => {
                   </text>
                 </g>
 
-                {/* Destination Nodes */}
                 {DESTINATIONS.map((dest) => {
                   const isLeicester = dest.id === "leicester";
                   const isIndependent = activeTab === "optimised" && isLeicester;
@@ -245,7 +239,6 @@ export const RouteDemo: React.FC = () => {
                 })}
               </svg>
 
-              {/* Overlay Badge for Leicester Train Split */}
               {activeTab === "optimised" && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
@@ -268,12 +261,10 @@ export const RouteDemo: React.FC = () => {
               )}
             </div>
 
-            {/* Sub-text CTA toggle */}
+            {/* Disclaimer & Toggle button */}
             <div className="mt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-white/5 gap-2">
-              <span className="font-mono">
-                {activeTab === "current"
-                  ? "Sequence: Coventry → Leicester → Rugby → Northampton → Milton Keynes"
-                  : "Optimised Sequence: Coventry → Rugby → Northampton → Milton Keynes"}
+              <span className="font-mono italic">
+                * Illustrative scenario. This does not represent CarPlanet's production routing algorithm.
               </span>
 
               {activeTab === "current" && (
@@ -289,7 +280,6 @@ export const RouteDemo: React.FC = () => {
 
           {/* Metrics & Results Sidebar */}
           <div className="lg:col-span-4 space-y-6 flex flex-col justify-between">
-            {/* Live Metrics Card */}
             <div className="bg-white dark:bg-surface border border-slate-200/80 dark:border-white/10 rounded-2xl p-6 space-y-6 shadow-card-light dark:shadow-none">
               <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
                 <span className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase font-semibold">
@@ -302,11 +292,10 @@ export const RouteDemo: React.FC = () => {
                       : "text-emerald-800 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20"
                   }`}
                 >
-                  {activeTab === "current" ? "MANUAL" : "OPTIMISED"}
+                  {activeTab === "current" ? "BASELINE" : "OPTIMISED"}
                 </span>
               </div>
 
-              {/* Total Estimated Cost Box */}
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 space-y-1">
                 <div className="text-xs text-slate-500 dark:text-slate-400 font-mono flex items-center space-x-1 font-semibold">
                   <PoundSterling className="w-3.5 h-3.5 text-slate-500" />
@@ -317,7 +306,6 @@ export const RouteDemo: React.FC = () => {
                 </div>
               </div>
 
-              {/* Detailed Metrics List */}
               <div className="space-y-3 text-xs font-mono">
                 <div className="flex justify-between py-1.5 border-b border-slate-200 dark:border-white/5">
                   <span className="text-slate-600 dark:text-slate-400">Shuttle Vehicle Miles</span>
@@ -346,7 +334,6 @@ export const RouteDemo: React.FC = () => {
               </div>
             </div>
 
-            {/* Savings Callout Box (Shows when Optimised is active) */}
             <AnimatePresence>
               {activeTab === "optimised" && (
                 <motion.div

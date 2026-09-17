@@ -9,6 +9,7 @@ import { CoreInsight } from "@/components/CoreInsight";
 import { OptimizerIntro } from "@/components/OptimizerIntro";
 import { RouteDemo } from "@/components/RouteDemo";
 import { DecisionExplanation } from "@/components/DecisionExplanation";
+import { DriverMobileExperience } from "@/components/DriverMobileExperience";
 import { ProductVision } from "@/components/ProductVision";
 import { Roadmap } from "@/components/Roadmap";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -19,7 +20,7 @@ export default function Home() {
   const [currentSection, setCurrentSection] = useState<number>(1);
   const [isAnalysisOpen, setIsAnalysisOpen] = useState<boolean>(false);
 
-  const TOTAL_SECTIONS = 10;
+  const TOTAL_SECTIONS = 11;
 
   // Track active section on scroll
   useEffect(() => {
@@ -68,12 +69,12 @@ export default function Home() {
         />
       </section>
 
-      {/* Section 02: Current Operating Model */}
+      {/* Section 02: The Core Opportunity (Proximity vs Cost) */}
       <section id="section-2">
         <CurrentProblem />
       </section>
 
-      {/* Section 03: Where Money Goes Cost Breakdown */}
+      {/* Section 03: Where Money Goes & Existing Workflow */}
       <section id="section-3">
         <CostBreakdown />
       </section>
@@ -88,28 +89,33 @@ export default function Home() {
         <OptimizerIntro />
       </section>
 
-      {/* Section 06: Core Interactive Demo */}
+      {/* Section 06: Core Interactive Demo (Baseline vs Optimised) */}
       <section id="section-6">
         <RouteDemo />
       </section>
 
-      {/* Section 07: Explainable Decision Logic */}
+      {/* Section 07: Explainable Decision Logic (Leicester Reframing) */}
       <section id="section-7">
         <DecisionExplanation />
       </section>
 
-      {/* Section 08: Product Vision & System Architecture */}
+      {/* Section 08: Driver Mobile Experience & Cost Reporting */}
       <section id="section-8">
+        <DriverMobileExperience />
+      </section>
+
+      {/* Section 09: Product Vision & Thesis Pipeline */}
+      <section id="section-9">
         <ProductVision />
       </section>
 
-      {/* Section 09: Implementation Roadmap */}
-      <section id="section-9">
+      {/* Section 10: Implementation Roadmap */}
+      <section id="section-10">
         <Roadmap />
       </section>
 
-      {/* Section 10: Final Closing CTA & Attribution */}
-      <section id="section-10">
+      {/* Section 11: Final Closing CTA & Attribution */}
+      <section id="section-11">
         <FinalCTA onOpenAnalysis={() => setIsAnalysisOpen(true)} />
       </section>
 

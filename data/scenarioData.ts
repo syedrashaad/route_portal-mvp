@@ -17,16 +17,16 @@ export interface LocationNode {
 
 export interface PlanMetrics {
   vehicleMiles: number;
-  paidRideTime: string; // e.g. "8h 40m"
+  paidRideTime: string;
   paidRideTimeMinutes: number;
-  vehicleDriverTime: string; // e.g. "4h 20m"
+  vehicleDriverTime: string;
   vehicleDriverTimeMinutes: number;
-  handoversWaiting: string; // e.g. "3h 20m"
+  handoversWaiting: string;
   handoversWaitingMinutes: number;
-  totalPaidHours: string; // e.g. "20h 55m"
+  totalPaidHours: string;
   totalPaidHoursDecimal: number;
-  lastCarHome: string; // e.g. "12:55"
-  totalCost: number; // e.g. 466.37
+  lastCarHome: string;
+  totalCost: number;
   routeSequence: string[];
   independentDrivers?: {
     locationId: string;
@@ -101,6 +101,7 @@ export const DESTINATIONS: LocationNode[] = [
 
 export const ALL_LOCATIONS = [HUB_LOCATION, ...DESTINATIONS];
 
+// Baseline Proximity-Based Plan
 export const CURRENT_PLAN: PlanMetrics = {
   vehicleMiles: 178,
   paidRideTime: "8h 40m",
@@ -124,6 +125,7 @@ export const CURRENT_PLAN: PlanMetrics = {
   ],
 };
 
+// Optimised Multi-Modal Plan
 export const OPTIMISED_PLAN: PlanMetrics = {
   vehicleMiles: 145,
   paidRideTime: "6h 05m",
@@ -165,41 +167,50 @@ export const SAVINGS_SUMMARY = {
   timeEarlier: "1h 05m",
 };
 
+export const EXISTING_WORKFLOW_STEPS = [
+  { step: 1, name: "Appointment Booked", desc: "Customer sells vehicle & specifies pickup window" },
+  { step: 2, name: "Buyer/Driver Assigned", desc: "Proximity-based assignment to nearest available driver" },
+  { step: 3, name: "Route Generated", desc: "Point-to-point route computed via RoutePortal" },
+  { step: 4, name: "Driver Travels", desc: "Driver departs to seller address" },
+  { step: 5, name: "Vehicle Collected", desc: "On-site check, V5/keys verified, car handed over" },
+  { step: 6, name: "Return to Showroom", desc: "Vehicle driven directly back to hub" },
+];
+
 export const COST_BREAKDOWN = [
   {
     name: "Paid time sitting in vehicle",
     percentage: 34,
-    color: "#6366F1", // Indigo
+    color: "#6366F1",
     description: "Drivers traveling as passengers waiting for their drop-off point.",
   },
   {
     name: "Waiting at sellers",
     percentage: 26,
-    color: "#F59E0B", // Amber
+    color: "#F59E0B",
     description: "Drivers standing by while sellers locate keys, paperwork, or clear access.",
   },
   {
     name: "Wasted / failed journeys",
     percentage: 17,
-    color: "#F43F5E", // Rose
+    color: "#F43F5E",
     description: "Seller unprepared, incorrect car details, or missing documents on arrival.",
   },
   {
     name: "Outlying cars",
     percentage: 13,
-    color: "#8B5CF6", // Purple
+    color: "#8B5CF6",
     description: "Isolated collection locations forcing multi-mile route detours.",
   },
   {
     name: "Vehicle returning empty",
     percentage: 7,
-    color: "#64748B", // Slate
+    color: "#64748B",
     description: "Positioning shuttle running empty legs after dropping final driver.",
   },
   {
     name: "Planning time",
     percentage: 3,
-    color: "#0EA5E9", // Sky
+    color: "#0EA5E9",
     description: "Manual dispatcher time spent mapping routes and making phone calls.",
   },
 ];
@@ -233,7 +244,7 @@ export const LEICESTER_DECISION = {
     taxiFare: 9.0,
     travelTimeMins: 65,
     driverHourlyRate: 16.0,
-    driverTimeCost: 17.33, // 65/60 * £16
+    driverTimeCost: 17.33,
     totalCost: 48.33,
     netSavings: 37.53,
     reasons: [
@@ -241,6 +252,51 @@ export const LEICESTER_DECISION = {
       "Frees shuttle to take optimal south-east corridor (Coventry → Rugby → MK)",
       "Reduces total paid hours across all 6 drivers by 4h 40m",
     ],
+  },
+};
+
+export const DRIVER_MOBILE_APP_DATA = {
+  shuttleRoute: [
+    {
+      id: "coventry",
+      locationName: "Coventry Collection",
+      window: "08:30 - 09:10",
+      eta: "08:30 (On Time)",
+      status: "Vehicle Collected",
+      estDriveCost: "£14.20",
+    },
+    {
+      id: "rugby",
+      locationName: "Rugby Collection",
+      window: "09:45 - 10:25",
+      eta: "09:50 (On Time)",
+      status: "In Transit",
+      estDriveCost: "£18.50",
+    },
+    {
+      id: "northampton",
+      locationName: "Northampton Collection",
+      window: "10:55 - 11:35",
+      eta: "11:00 (On Time)",
+      status: "Scheduled",
+      estDriveCost: "£26.80",
+    },
+    {
+      id: "mk",
+      locationName: "Milton Keynes Collection",
+      window: "11:50 - 12:30",
+      eta: "11:50 (On Time)",
+      status: "Scheduled",
+      estDriveCost: "£32.40",
+    },
+  ],
+  independentDriver: {
+    locationName: "Leicester Collection",
+    mode: "Train + Taxi",
+    window: "09:05 - 09:45",
+    eta: "65 min door-to-car",
+    estCost: "£31.00",
+    status: "Train Boarded",
   },
 };
 

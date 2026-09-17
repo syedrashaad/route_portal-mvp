@@ -2,8 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, ArrowRight } from "lucide-react";
-import { COST_BREAKDOWN } from "@/data/scenarioData";
+import { AlertTriangle, ArrowRight, Layers, CheckCircle2 } from "lucide-react";
+import { COST_BREAKDOWN, EXISTING_WORKFLOW_STEPS } from "@/data/scenarioData";
 
 export const CostBreakdown: React.FC = () => {
   return (
@@ -15,14 +15,64 @@ export const CostBreakdown: React.FC = () => {
         {/* Header */}
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-xs font-mono text-rose-700 dark:text-rose-400 font-bold">
-            <span>SECTION 03 • COST ANALYSIS</span>
+            <span>SECTION 03 • WORKFLOW & COST ANALYSIS</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
             The problem isn't just routing.
           </h2>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-            Routing algorithms only optimize pathing. But up to 43% of total controllable collection cost is lost before a vehicle even turns its key.
+            RoutePortal already handles point-to-point routing. But up to 43% of total controllable collection cost is lost before a vehicle even turns its key.
           </p>
+        </div>
+
+        {/* Existing Workflow vs Optimisation Layer Architecture */}
+        <div className="bg-slate-50/80 dark:bg-surface border border-slate-200/80 dark:border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-card-light dark:shadow-none">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pb-4 border-b border-slate-200 dark:border-white/10">
+            <div>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                THE EXISTING ROUTEPORTAL WORKFLOW
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                Production baseline execution pipeline
+              </p>
+            </div>
+            <span className="text-xs font-mono text-indigo-700 dark:text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20 font-bold">
+              6 CORE STEPS
+            </span>
+          </div>
+
+          {/* Existing 6 steps grid */}
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-3 text-xs font-mono">
+            {EXISTING_WORKFLOW_STEPS.map((step) => (
+              <div
+                key={step.step}
+                className="p-3 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 space-y-1 text-center shadow-sm dark:shadow-none"
+              >
+                <div className="text-indigo-600 dark:text-indigo-400 font-bold">0{step.step}</div>
+                <div className="font-semibold text-slate-900 dark:text-white text-[11px]">{step.name}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Highlighting Where Collection Optimiser Layer Sits */}
+          <div className="mt-6 p-6 rounded-xl bg-gradient-to-r from-indigo-500/10 via-sky-500/10 to-indigo-500/10 border border-indigo-500/30 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center space-x-3">
+              <div className="p-3 rounded-xl bg-indigo-600/20 text-indigo-700 dark:text-indigo-400">
+                <Layers className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900 dark:text-white text-base">
+                  Where does the next optimisation layer sit?
+                </h4>
+                <p className="text-xs text-slate-600 dark:text-slate-300">
+                  The <strong>Collection Optimiser</strong> sits directly above the route generator—evaluating the entire day's collection plan across drivers, modes, and costs rather than only the next route.
+                </p>
+              </div>
+            </div>
+            <span className="px-4 py-2 rounded-xl bg-indigo-600 text-white font-mono text-xs font-bold whitespace-nowrap shadow-sm">
+              OPTIMISATION LAYER
+            </span>
+          </div>
         </div>
 
         {/* Cost Allocation Bars */}
@@ -42,7 +92,6 @@ export const CostBreakdown: React.FC = () => {
             </div>
           </div>
 
-          {/* Animated Progress Bars */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             {COST_BREAKDOWN.map((item, index) => (
               <motion.div
@@ -58,7 +107,6 @@ export const CostBreakdown: React.FC = () => {
                   <span className="font-mono font-bold text-slate-900 dark:text-slate-100">{item.percentage}%</span>
                 </div>
 
-                {/* Progress Bar Container */}
                 <div className="w-full h-3 rounded-full bg-slate-200 dark:bg-white/10 overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
@@ -75,75 +123,6 @@ export const CostBreakdown: React.FC = () => {
                 </p>
               </motion.div>
             ))}
-          </div>
-        </div>
-
-        {/* Process Flow Breakdown */}
-        <div className="bg-slate-100/90 dark:bg-[#0E1017] border border-slate-200/80 dark:border-white/10 rounded-2xl p-6 sm:p-10 space-y-8 shadow-card-light dark:shadow-none">
-          <div className="space-y-2 text-center max-w-2xl mx-auto">
-            <span className="text-xs font-mono text-amber-700 dark:text-amber-400 font-bold uppercase tracking-wider">
-              OPERATIONAL INSIGHT
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
-              Two of the biggest opportunities happen before routing begins.
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              When a seller isn't ready or documents are missing, even the optimal route collapses.
-            </p>
-          </div>
-
-          {/* Sequential Chain Visual */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
-            <div className="p-5 rounded-xl bg-white dark:bg-white/5 border border-rose-500/30 space-y-2 text-center shadow-sm dark:shadow-none">
-              <div className="w-8 h-8 rounded-full bg-rose-500/20 text-rose-700 dark:text-rose-400 font-bold mx-auto flex items-center justify-center text-sm">
-                1
-              </div>
-              <h4 className="font-semibold text-slate-900 dark:text-white text-sm">Seller Isn't Ready</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-400">Keys missing, V5 draft unlocated, vehicle blocked</p>
-            </div>
-
-            <div className="hidden md:flex items-center justify-center text-slate-400">
-              <ArrowRight className="w-6 h-6" />
-            </div>
-
-            <div className="p-5 rounded-xl bg-white dark:bg-white/5 border border-amber-500/30 space-y-2 text-center shadow-sm dark:shadow-none">
-              <div className="w-8 h-8 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-400 font-bold mx-auto flex items-center justify-center text-sm">
-                2
-              </div>
-              <h4 className="font-semibold text-slate-900 dark:text-white text-sm">Driver Arrives On Site</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-400">Driver shuttle sits waiting on driveway or street</p>
-            </div>
-
-            <div className="hidden md:flex items-center justify-center text-slate-400">
-              <ArrowRight className="w-6 h-6" />
-            </div>
-
-            <div className="p-5 rounded-xl bg-white dark:bg-white/5 border border-red-500/40 space-y-2 text-center shadow-sm dark:shadow-none">
-              <div className="w-8 h-8 rounded-full bg-red-500/20 text-red-700 dark:text-red-400 font-bold mx-auto flex items-center justify-center text-sm">
-                3
-              </div>
-              <h4 className="font-semibold text-slate-900 dark:text-white text-sm">Wait / Failed Collection</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-400">Trip aborted or 45-min standing delay</p>
-            </div>
-
-            <div className="hidden md:flex items-center justify-center text-slate-400">
-              <ArrowRight className="w-6 h-6" />
-            </div>
-
-            <div className="p-5 rounded-xl bg-rose-100/80 dark:bg-rose-950/40 border border-rose-500/40 space-y-2 text-center">
-              <div className="w-8 h-8 rounded-full bg-rose-500/30 text-rose-800 dark:text-rose-300 font-bold mx-auto flex items-center justify-center text-sm">
-                4
-              </div>
-              <h4 className="font-semibold text-rose-900 dark:text-rose-200 text-sm">Paid Time Is Lost</h4>
-              <p className="text-xs text-rose-700 dark:text-rose-300/80">Cascades downstream delays across 4 other drivers</p>
-            </div>
-          </div>
-
-          {/* Key takeaway banner */}
-          <div className="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-center">
-            <p className="text-sm sm:text-base font-semibold text-indigo-800 dark:text-indigo-300">
-              This is why Route Portal starts with process, not AI.
-            </p>
           </div>
         </div>
       </div>

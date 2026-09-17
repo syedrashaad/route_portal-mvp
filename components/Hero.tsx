@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Zap, MapPin, Navigation } from "lucide-react";
+import { ArrowDown, Zap, MapPin, Navigation, ArrowRight } from "lucide-react";
 import { DESTINATIONS, HUB_LOCATION } from "@/data/scenarioData";
 
 interface HeroProps {
@@ -39,18 +39,28 @@ export const Hero: React.FC<HeroProps> = ({ onSeeHowItWorks, onJumpToDemo }) => 
             </span>
           </h1>
 
-          {/* Subheadline */}
+          {/* Subheadline with Updated Positioning */}
           <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed font-normal">
-            Route Portal explores how CarPlanet could reduce the cost and complexity of vehicle collection by optimising the journey to each car, not the journey home.
+            RoutePortal already handles the core routing workflow. This concept explores the next layer: optimising how an entire day's vehicle collections are completed across drivers, travel modes, time and cost.
           </p>
+
+          {/* New Thesis Banner */}
+          <div className="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20 max-w-2xl">
+            <div className="flex items-center space-x-2 text-xs font-mono font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-wider">
+              <span>PRODUCT THESIS</span>
+            </div>
+            <p className="text-sm font-semibold text-slate-900 dark:text-white mt-1">
+              "From proximity-based routing to cost-aware collection planning."
+            </p>
+          </div>
 
           {/* Disclaimer Label */}
           <p className="text-xs text-slate-500 dark:text-slate-500 italic font-mono pt-1">
-            *Illustrative product concept & operational analysis. Not verified CarPlanet operational data.
+            *Illustrative product concept & operational analysis. An optimisation layer explored around the existing RoutePortal workflow.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-wrap gap-4 pt-2">
             <button
               onClick={onSeeHowItWorks}
               className="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white text-white dark:text-slate-950 font-semibold text-sm transition-all duration-200 flex items-center space-x-2 shadow-lg dark:hover:shadow-white/20 active:scale-95 group"
@@ -95,7 +105,6 @@ export const Hero: React.FC<HeroProps> = ({ onSeeHowItWorks, onJumpToDemo }) => 
                 viewBox="0 0 800 550"
                 className="w-full h-full object-contain filter drop-shadow-md"
               >
-                {/* Stylised road vector grid */}
                 <path
                   d="M 220 330 Q 290 335 360 340 T 480 320 T 580 370 T 670 430"
                   fill="none"
@@ -118,7 +127,6 @@ export const Hero: React.FC<HeroProps> = ({ onSeeHowItWorks, onJumpToDemo }) => 
                   strokeDasharray="4 4"
                 />
 
-                {/* Connecting Radians from Birmingham */}
                 {DESTINATIONS.map((dest, i) => (
                   <motion.line
                     key={dest.id}
@@ -134,7 +142,6 @@ export const Hero: React.FC<HeroProps> = ({ onSeeHowItWorks, onJumpToDemo }) => 
                   />
                 ))}
 
-                {/* Birmingham Hub Marker */}
                 <g transform={`translate(${HUB_LOCATION.x}, ${HUB_LOCATION.y})`}>
                   <circle r="24" className="fill-indigo-500/20 dark:fill-indigo-600/15 animate-ping" />
                   <circle r="14" fill="#4F46E5" stroke="#818CF8" strokeWidth="2.5" />
@@ -151,7 +158,6 @@ export const Hero: React.FC<HeroProps> = ({ onSeeHowItWorks, onJumpToDemo }) => 
                   </text>
                 </g>
 
-                {/* Destination Nodes */}
                 {DESTINATIONS.map((dest, i) => (
                   <motion.g
                     key={dest.id}
@@ -178,7 +184,6 @@ export const Hero: React.FC<HeroProps> = ({ onSeeHowItWorks, onJumpToDemo }) => 
               </svg>
             </div>
 
-            {/* Map Legend */}
             <div className="mt-4 flex items-center justify-between text-xs font-mono text-slate-600 dark:text-slate-400">
               <div className="flex items-center space-x-2">
                 <MapPin className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
