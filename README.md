@@ -37,7 +37,8 @@ Instead of presenting traditional PowerPoint slides or static mockups, Route Por
 
 ## 🚀 Interactive Features
 
-- **Stylised UK Map Visualiser**: Custom vector SVG map displaying Birmingham hub, Coventry, Rugby, Leicester, Northampton, and Milton Keynes with zero external API key requirements.
+- **Light & Dark Theme Modes**: Polished default **Light Mode** (#F8F9FC background, high contrast editorial styling) and sleek **Dark Mode** (#08090D background), with persistent user preference saved via `localStorage`.
+- **Dedicated Vector Map Visualiser**: Custom vector SVG map displaying Birmingham hub, Coventry, Rugby, Leicester, Northampton, and Milton Keynes with high-contrast route lines for both themes.
 - **Interactive Plan Switcher**: Toggle instantly between `Current Plan` and `Optimised Plan` with real-time metric tickers.
 - **Driver Split Animation**: Visual departure sequence showing the Leicester driver separating from the shuttle loop to take public rail + taxi.
 - **Explainable Decision Logic**: Side-by-side trade-off cards comparing *Keep on shuttle* (£85.86) vs *Send separately* (£48.33).
@@ -50,7 +51,7 @@ Instead of presenting traditional PowerPoint slides or static mockups, Route Por
 
 - **Framework**: [Next.js 14](https://nextjs.org/) (App Router, React 18, Server Components)
 - **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict Mode)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (Custom Dark Charcoal Theme)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (Custom Light/Dark Themes)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/) (Scroll-driven viewports, spring physics)
 - **Icons**: [Lucide React](https://lucide.dev/)
 
@@ -65,8 +66,8 @@ Ensure you have Node.js 18+ installed on your machine.
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/your-username/route-portal.git
-cd route-portal
+git clone https://github.com/syedrashaad/route_portal-mvp.git
+cd route_portal-mvp
 npm install
 ```
 
@@ -93,44 +94,26 @@ npm run start
 
 Deploying Route Portal to Vercel takes less than 2 minutes:
 
-### Option A: Deploy via GitHub Integration (Recommended)
-
 1. **Push to GitHub**:
    Ensure your local repository is committed and pushed to GitHub:
    ```bash
    git add .
-   git commit -m "feat: complete Route Portal interactive product concept"
-   git branch -M main
-   git remote add origin https://github.com/your-username/route-portal.git
-   git push -u origin main
+   git commit -m "feat: add Light mode and update author to Rashaad Syed"
+   git push origin main
    ```
 
 2. **Connect to Vercel**:
    - Log in to your [Vercel Dashboard](https://vercel.com/dashboard).
    - Click **Add New...** → **Project**.
-   - Select your `route-portal` repository from GitHub.
+   - Select your `syedrashaad/route_portal-mvp` repository from GitHub.
 
-3. **Configure Project**:
-   - **Framework Preset**: Next.js
-   - **Root Directory**: `./`
-   - **Build Command**: `next build` (default)
-   - **Output Directory**: `.next` (default)
-
-4. **Deploy**:
+3. **Deploy**:
    - Click **Deploy**. Vercel will build and publish your project automatically with an SSL-secured URL.
-
-### Option B: Deploy via Vercel CLI
-
-```bash
-npm install -g vercel
-vercel login
-vercel
-```
 
 ---
 
 ## 👤 Author & Attribution
 
-**Built by Mehivish**  
+**Built by Rashaad Syed**  
 *Product × Technology × Optimisation*  
 Created as an executive product concept for CarPlanet operational vehicle collection.

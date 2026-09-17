@@ -48,7 +48,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#08090D] text-slate-100 selection:bg-indigo-500 selection:text-white relative">
+    <main className="min-h-screen bg-[#F8F9FC] dark:bg-[#08090D] text-slate-900 dark:text-slate-100 selection:bg-indigo-500 selection:text-white relative transition-colors duration-300">
       {/* Persistent Navigation Bar */}
       <Navbar
         currentSection={currentSection}
