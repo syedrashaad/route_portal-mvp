@@ -1,0 +1,200 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowDown, Zap, MapPin, Navigation } from "lucide-react";
+import { DESTINATIONS, HUB_LOCATION } from "@/data/scenarioData";
+
+interface HeroProps {
+  onSeeHowItWorks: () => void;
+  onJumpToDemo: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onSeeHowItWorks, onJumpToDemo }) => {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-grid-pattern overflow-hidden">
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-sky-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10">
+        {/* Left Column: Text & Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-7 space-y-6 text-left"
+        >
+          {/* Concept Badge */}
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono tracking-wider text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+            <span>PRODUCT CONCEPT • SEPTEMBER 2026</span>
+          </div>
+
+          {/* Main Headline */}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]">
+            Every car has to come home. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-slate-200 to-sky-300">
+              The question is how.
+            </span>
+          </h1>
+
+          {/* Subheadline */}
+          <p className="text-lg sm:text-xl text-slate-400 max-w-2xl leading-relaxed font-normal">
+            Route Portal explores how CarPlanet could reduce the cost and complexity of vehicle collection by optimising the journey to each car, not the journey home.
+          </p>
+
+          {/* Disclaimer Label */}
+          <p className="text-xs text-slate-500 italic font-mono pt-1">
+            *Illustrative product concept & operational analysis. Not verified CarPlanet operational data.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4 pt-4">
+            <button
+              onClick={onSeeHowItWorks}
+              className="px-6 py-3.5 rounded-xl bg-white text-slate-950 font-semibold text-sm hover:bg-slate-200 transition-all duration-200 flex items-center space-x-2 shadow-lg hover:shadow-white/20 active:scale-95 group"
+            >
+              <span>See how it works</span>
+              <ArrowDown className="w-4 h-4 text-slate-700 group-hover:translate-y-0.5 transition-transform" />
+            </button>
+
+            <button
+              onClick={onJumpToDemo}
+              className="px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 hover:border-white/20 font-semibold text-sm transition-all duration-200 flex items-center space-x-2 active:scale-95"
+            >
+              <Zap className="w-4 h-4 text-amber-400" />
+              <span>Jump to the optimisation</span>
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Right Column: Stylised Vector Map Preview */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-5 relative"
+        >
+          <div className="relative rounded-2xl bg-[#0E1017] border border-white/10 p-6 shadow-2xl overflow-hidden group">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+              <div className="flex items-center space-x-2">
+                <Navigation className="w-4 h-4 text-indigo-400" />
+                <span className="text-xs font-mono font-medium text-slate-300">
+                  UK MIDLANDS COLLECTION NETWORK
+                </span>
+              </div>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                5 TARGET CARS
+              </span>
+            </div>
+
+            {/* Stylised SVG Vector Map */}
+            <div className="relative w-full h-[340px] rounded-xl bg-[#090A0F] border border-white/5 overflow-hidden flex items-center justify-center">
+              <svg
+                viewBox="0 0 800 550"
+                className="w-full h-full object-contain filter drop-shadow-lg"
+              >
+                {/* Stylised road vector grid */}
+                <path
+                  d="M 220 330 Q 290 335 360 340 T 480 320 T 580 370 T 670 430"
+                  fill="none"
+                  stroke="rgba(99, 102, 241, 0.25)"
+                  strokeWidth="3"
+                  strokeDasharray="6 6"
+                />
+                <path
+                  d="M 220 330 Q 350 250 490 200"
+                  fill="none"
+                  stroke="rgba(56, 189, 248, 0.25)"
+                  strokeWidth="3"
+                  strokeDasharray="6 6"
+                />
+                <path
+                  d="M 490 200 Q 535 285 580 370"
+                  fill="none"
+                  stroke="rgba(255, 255, 255, 0.1)"
+                  strokeWidth="2"
+                  strokeDasharray="4 4"
+                />
+
+                {/* Connecting Radians from Birmingham */}
+                {DESTINATIONS.map((dest, i) => (
+                  <motion.line
+                    key={dest.id}
+                    x1={HUB_LOCATION.x}
+                    y1={HUB_LOCATION.y}
+                    x2={dest.x}
+                    y2={dest.y}
+                    stroke="rgba(255, 255, 255, 0.15)"
+                    strokeWidth="1.5"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.2, delay: 0.3 + i * 0.15 }}
+                  />
+                ))}
+
+                {/* Birmingham Hub Marker */}
+                <g transform={`translate(${HUB_LOCATION.x}, ${HUB_LOCATION.y})`}>
+                  <circle r="24" fill="rgba(99, 102, 241, 0.15)" className="animate-ping" />
+                  <circle r="14" fill="#4F46E5" stroke="#818CF8" strokeWidth="2" />
+                  <text
+                    y="-22"
+                    textAnchor="middle"
+                    fill="#FFFFFF"
+                    fontSize="16"
+                    fontWeight="bold"
+                    className="font-sans"
+                  >
+                    Birmingham (Hub)
+                  </text>
+                  <text y="30" textAnchor="middle" fill="#818CF8" fontSize="12" className="font-mono">
+                    Showroom / Base
+                  </text>
+                </g>
+
+                {/* Destination Nodes */}
+                {DESTINATIONS.map((dest, i) => (
+                  <motion.g
+                    key={dest.id}
+                    transform={`translate(${dest.x}, ${dest.y})`}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.6 + i * 0.15 }}
+                  >
+                    <circle r="8" fill="#1E293B" stroke="#38BDF8" strokeWidth="2" />
+                    <circle r="3" fill="#38BDF8" />
+                    <text
+                      y="-14"
+                      textAnchor="middle"
+                      fill="#E2E8F0"
+                      fontSize="14"
+                      fontWeight="600"
+                    >
+                      {dest.name}
+                    </text>
+                    <text y="22" textAnchor="middle" fill="#94A3B8" fontSize="11" className="font-mono">
+                      {dest.distanceMiles} mi
+                    </text>
+                  </motion.g>
+                ))}
+              </svg>
+            </div>
+
+            {/* Map Legend */}
+            <div className="mt-4 flex items-center justify-between text-xs font-mono text-slate-400">
+              <div className="flex items-center space-x-2">
+                <MapPin className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Showroom Hub</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-sky-400" />
+                <span>5 Collection Points</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
